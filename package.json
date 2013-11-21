@@ -1,0 +1,21 @@
+{
+  "name": "pokemon_pcap",
+  "version": "0.0.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "pcap": "~1.0.1",
+    "sqlite3": "~2.1.19",
+    "async": "~0.2.9"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Toni Fadjukoff",
+  "license": "BSD"
+}
