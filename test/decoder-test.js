@@ -44,30 +44,24 @@ describe("PkxDecoder", function() {
             assert.deepEqual([0,0,0,0,0,0], data.evs)
         })
     })
-    describe("#decode(poke1.pkx)", function() {
-        var data;
-        beforeEach(function(done) {
-            decoder.decodeFile("test/data/poke1.pkx", function(err, pokemon_data) {
-                data = pokemon_data
-                done(err)
+
+    var study_poke = function(path) {
+        return function() {
+            var data;
+            beforeEach(function(done) {
+                decoder.decodeFile(path, function(err, pokemon_data) {
+                    data = pokemon_data
+                    done(err)
+                })
             })
-        })
-        it("should return object with name Gible", function() {
-            assert.equal("Gible", data.name)
-            console.log(data)
-        })
-    })
-    describe("#decode(poke2.pkx)", function() {
-        var data;
-        beforeEach(function(done) {
-            decoder.decodeFile("test/data/poke2.pkx", function(err, pokemon_data) {
-                data = pokemon_data
-                done(err)
+            it("should return non-null pokemon", function() {
+                assert(data)
+                console.log(data)
             })
-        })
-        it("should return object with name Galekid", function() {
-            assert.equal("Galekid", data.name)
-            console.log(data)
-        })
+        }
+    }
+
+    "test/data/chestpin.pkx test/data/gengar.pkx test/data/poke1.pkx test/data/skitty.pkx test/data/vivillon.pkx test/data/eevee.pkx test/data/lineon.pkx test/data/poke2.pkx test/data/snorlax.pkx".split(/\s+/).forEach(function(file) {
+        describe("#decode('" + file + "')", study_poke(file))
     })
 })
