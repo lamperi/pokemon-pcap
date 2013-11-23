@@ -1,22 +1,39 @@
 {
   "name": "pokemon_pcap",
   "version": "0.0.0",
-  "description": "",
+  "description": "A tool to capture and display Pokemon data on Pokemon X and Y Wonder Trades",
+  "author": "Toni Fadjukoff <lamperi@iki.fi>",
+  "homepage": "https://github.com/lamperi/pokemon_pcap",
+  "bugs": "https://github.com/lamperi/pokemon_pcap/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lamperi/pokemon_pcap.git"
+  },
+  "license": "BSD",
+  "main": "lib/pokemon-pcap.js",
+  "bin": {
+    "pokemon-pcap": "./main.js"
+  },
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "dependencies": {
     "pcap": "~1.0.1",
     "sqlite3": "~2.1.19",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "socket.io": "~0.9.16",
+    "node-static": "~0.7.2"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "phantomjs": "~1.9.2-4",
+    "phantom": "~0.5.4",
+    "socket.io": "~0.9.16"
   },
   "scripts": {
     "test": "mocha"
   },
-  "author": "Toni Fadjukoff",
-  "license": "BSD"
+  "os": ["linux", "macos"]
 }

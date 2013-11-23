@@ -9,6 +9,14 @@ using namespace v8;
 
 Handle<Value> Decrypt(const Arguments& args) {
 	HandleScope scope;
+
+	if (args.Length() != 1) {
+		return ThrowException(Exception::TypeError(String::New("Decrypt takes exactly one arguments")));
+	}
+	if (!node::Buffer::HasInstance(args[0])) {
+		return ThrowException(Exception::TypeError(String::New("First argument must be a buffer")));
+	}
+
 	char* content = node::Buffer::Data(args[0]->ToObject());
 	int contentlength = node::Buffer::Length(args[0]->ToObject());
 
