@@ -56,7 +56,6 @@ describe("PkxDecoder", function() {
             })
             it("should return non-null pokemon", function() {
                 assert(data)
-                console.log(data)
             })
         }
     }

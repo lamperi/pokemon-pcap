@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dtypes.h"
+#include "xycrypt.h"
 
 
 enum PkxSizes {
@@ -70,10 +71,8 @@ inline u32 GetShuffleType(u32 pid);
 void UnshufflePkx(u32* pkx_in, u32* pkx_out);
 inline void SetUncryptedDataEqual(u32* pkx_in, u32* pkx_out);
 
-int main(int argc, char** argv)
+int xy_decrypt(char* in_pkx, int in_pkx_length, char* out_pkx)
 {
-    FILE* in_pkx;
-    FILE* out_pkx;
     u32 box_pkx[SIZE_BOX_PKX / sizeof(u32)];
     u32 outbox_pkx[SIZE_BOX_PKX / sizeof(u32)];
     u32 party_data[SIZE_PKX_PARTY_DATA / sizeof(u32)];
@@ -82,60 +81,12 @@ int main(int argc, char** argv)
 
     InitRnd(&xypkx);
 
-    /*
-	typedef unsigned char                   u8;
-typedef unsigned short int              u16;
-typedef unsigned long int               u32;
-typedef unsigned long long int  u64;
+    memcpy(box_pkx, in_pkx, in_pkx_length);
 
-typedef signed char                             s8;
-typedef signed short int                s16;
-typedef signed long      int            s32;
-typedef signed long long int    s64;
-
-typedef float                                   f32;
-typedef double                                  f64;
-*/
-    printf("sizeof u8 %lu\n", sizeof(u8));
-    printf("sizeof u16 %lu\n", sizeof(u16));
-    printf("sizeof u32 %lu\n", sizeof(u32));
-    printf("sizeof u64 %lu\n", sizeof(u64));
-
-    printf("sizeof s8 %lu\n", sizeof(s8));
-    printf("sizeof s16 %lu\n", sizeof(s16));
-    printf("sizeof s32 %lu\n", sizeof(s32));
-    printf("sizeof s64 %lu\n", sizeof(s64));
-
-    printf("sizeof f32 %lu\n", sizeof(f32));
-    printf("sizeof f64 %lu\n", sizeof(f64));
-
-    if (argc < 3)
-    {
-        printf("XYCrypt by Bond697\n");
-        printf("Based on research by Xfr and Bond697\n\n");
-        printf("Usage:\n");
-        printf("xypkmcrypt infile outfile\n");
-	exit(0);
-    }
-
-    in_pkx = fopen(argv[1], "rb+");
-    if (!in_pkx)
-    {
-        printf("Error opening in pkx file.");
-        exit(3);
-    }
-
-    fseek(in_pkx, 0, SEEK_SET);
-    fread(box_pkx, sizeof(u32), SIZE_BOX_PKX / sizeof(u32), in_pkx);
-
-    fseek(in_pkx, 0, SEEK_END);     // get the size of the file
-    u32 fsz = ftell(in_pkx); 
-    fseek(in_pkx, 0, SEEK_SET);
-
-    if ((fsz != SIZE_PARTY_PKX) && (fsz != SIZE_BOX_PKX))
+    if ((in_pkx_length != SIZE_PARTY_PKX) && (in_pkx_length != SIZE_BOX_PKX))
     {
         printf("Pkx is the wrong size.");
-        exit(5);
+        return 0;
     }
 
     u32 decryptKey = box_pkx[0];    // key is now pid, not checksum
@@ -146,41 +97,30 @@ typedef double                                  f64;
 
     if (!VerifyPkxChecksum(&box_pkx[2], (box_pkx[1] >> 16) & 0xFFFF, SIZE_PKX_CRYPT_LEN))
     {
-        printf("Checksum failed.  Fixing.\n\n");
-        FixPkxChecksum(box_pkx, SIZE_PKX_CRYPT_LEN);
+        printf("Checksum failed.");
+        return 0;
+        //printf("Checksum failed.  Fixing.\n\n");
+        //FixPkxChecksum(box_pkx, SIZE_PKX_CRYPT_LEN);
     }
 
-    if (fsz == SIZE_PARTY_PKX)
+    if (in_pkx_length == SIZE_PARTY_PKX)
     {
 
         decryptKey = box_pkx[0];
 
-        fseek(in_pkx, SIZE_BOX_PKX, SEEK_SET);
-        fread(party_data, sizeof(u32), SIZE_PKX_PARTY_DATA / sizeof(u32), in_pkx);
-    
+	memcpy(in_pkx + SIZE_BOX_PKX, party_data, SIZE_PKX_PARTY_DATA);
+
         CryptPkx(party_data, &decryptKey, SIZE_PKX_PARTY_DATA, &xypkx);
     }
 
-    out_pkx = fopen(argv[2], "wb+");
-    if (!out_pkx)
+    memcpy(out_pkx, outbox_pkx, SIZE_BOX_PKX);
+
+    if (in_pkx_length == SIZE_PARTY_PKX)
     {
-        printf("Error opening out pkx file.");
-        exit(4);
+	memcpy(out_pkx + SIZE_BOX_PKX, party_data, SIZE_PKX_PARTY_DATA);
     }
 
-    fseek(out_pkx, 0, SEEK_SET);
-    fwrite(outbox_pkx, sizeof(u32), SIZE_BOX_PKX / sizeof(u32), out_pkx);
-
-    if (fsz == SIZE_PARTY_PKX)
-    {
-        fseek(out_pkx, SIZE_BOX_PKX, SEEK_SET);
-        fwrite(party_data, sizeof(u32), SIZE_PKX_PARTY_DATA / sizeof(u32), out_pkx);
-    }
-
-    fclose(in_pkx);
-    fclose(out_pkx);
-
-    return 0;
+    return in_pkx_length;
 }
 
 

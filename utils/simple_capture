@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-# At least the following line will allow to capture WT packets:
-# sudo node simple_capture en3 "ip proto \udp and length > 800"
+// At least the following line will allow to capture WT packets:
+// sudo node simple_capture en3 "ip proto \udp and length > 800"
 
 /*global process require exports */
 
