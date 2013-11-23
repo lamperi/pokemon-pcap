@@ -2,3 +2,4 @@
 xycrypt
 node_modules/
 build/
+test/raw-series/*.bin
