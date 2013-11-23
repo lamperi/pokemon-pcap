@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Poke checker</title>
+	</head>
+	<body>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/config.js"></script>
+		<script>
+			var socket = io.connect(location.protocol + location.hostname + ":" + config.port)
+			socket.on('pokemon', function(data) {
+				console.log(data.pokemon)
+			})
+		</script>
+	</body>
+
+</html>
