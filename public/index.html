@@ -7,8 +7,8 @@
 		<script src="/config.js"></script>
 		<script>
 			var socket = io.connect(location.protocol + location.hostname + ":" + config.port)
-			socket.on('pokemon', function(data) {
-				console.log(data.pokemon)
+			socket.on('pokemon', function(pokemon) {
+				console.log(pokemon)
 			})
 		</script>
 	</body>

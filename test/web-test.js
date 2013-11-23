@@ -1,7 +1,8 @@
-var phantom = require('phantom')
-var PokemonWeb = require('../lib/web').PokemonWeb
+var phantom = require('phantom'),
+    PokemonWeb = require('../lib/web').PokemonWeb,
+    assert = require('assert')
 
-describe.skip('PokemonWeb', function() {
+describe('PokemonWeb', function() {
     var pokemonWeb = new PokemonWeb(5001, '0.0.0.0')
     var ph
     before(function(once) {
@@ -13,10 +14,11 @@ describe.skip('PokemonWeb', function() {
 
     it('should serve index.html', function(once) {
         ph.createPage(function(page) {
-            page.open('http://localhost:5001', function(status) {
+            page.open('http://localhost:5001/index.html', function(status) {
                 assert.equal('success', status)
                 once()
             })
         })
     })
+
 })

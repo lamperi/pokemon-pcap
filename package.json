@@ -23,7 +23,7 @@
     "sqlite3": "~2.1.19",
     "async": "~0.2.9",
     "socket.io": "~0.9.16",
-    "node-static": "~0.7.2"
+    "express": "~3.4.4"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
@@ -35,5 +35,8 @@
   "scripts": {
     "test": "mocha"
   },
-  "os": ["linux", "macos"]
+  "os": [
+    "linux",
+    "macos"
+  ]
 }
