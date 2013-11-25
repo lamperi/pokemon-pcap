@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+var Detector = require('../lib//detector').Detector,
+    Decrypter = require('../lib/decrypter').Decrypter,
+    fs = require('fs')
+
+function Transformer(config) {
+
+    this.detector = new Detector()
+    this.decrypter = new Decrypter()
+
+    this.detector.on('encrypted_pkx', this.decrypter.decrypt.bind(this.decrypter))
+    this.decrypter.on('pkx', this.onPkx.bind(this))
+
+    this.decrypter.on('error', this.onError.bind(this))
+}
+
+Transformer.prototype.onPkx = function(pokemon) {
+    fs.writeFileSync(toFile, pokemon)
+}
+
+Transformer.prototype.onError = function(error) {
+    console.log('error', error)
+    process.exit(1)
+}
+
+var t = new Transformer()
+
+var fromFile = process.argv[2] || "input.bin"
+var toFile = process.argv[3] || fromFile.replace(/\.bin$/, '.pkx')
+if (toFile == fromFile) {
+    toFile = fromFile + '.pkx'
+}
+var packet = fs.readFileSync(fromFile)
+t.detector.testPacket(packet)
