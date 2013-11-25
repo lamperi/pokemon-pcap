@@ -44,13 +44,22 @@ var packet_id = 1;
 pcap_session.on('packet', function (raw_packet) {
     var packet = pcap.decode.packet(raw_packet);
     util.puts(pcap.print.packet(packet));
-    console.log(packet)
+    // console.log(packet)
 
     if (packet.link_type == 'LINKTYPE_ETHERNET' && packet.link && packet.link.ip && packet.link.ip.protocol_name == 'UDP') {
         if (packet.link.ip.udp.data) {
-            console.log(packet.link.ip.udp.data)
-            fs.writeFileSync("data/packet" + (packet_id++) + ".bin", packet.link.ip.udp.data)
+            fs.writeFileSync("data/udp-packet" + packet_id + ".bin", packet.link.ip.udp.data)
+            delete packet.link.ip.udp.data
+            fs.writeFileSync("data/udp-packet" + packet_id + ".json", JSON.stringify(packet))
+        }
+    }
+    if (packet.link_type == 'LINKTYPE_ETHERNET' && packet.link && packet.link.ip && packet.link.ip.protocol_name == 'TCP') {
+        if (packet.link.ip.tcp.data) {
+            fs.writeFileSync("data/tcp-packet" + packet_id + ".bin", packet.link.ip.tcp.data)
+            delete packet.link.ip.tcp.data
+            fs.writeFileSync("data/tcp-packet" + packet_id + ".json", JSON.stringify(packet))
         }
     }
 
+    ++packet_id;
 });
