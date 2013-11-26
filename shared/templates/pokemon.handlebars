@@ -1,0 +1,49 @@
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Your Pokémon
+          </div>
+          <div class="panel-body">
+             <div class="row">
+               <div class="col-md-4"><span class="title">Species</span><span class="value">{{ species }}</span></div>
+               <div class="col-md-2"><span class="title">ID</span><span class="value">{{ ot.id }}</span></div>
+               <div class="col-md-2"><span class="title">SID</span><span class="value">{{ ot.secret_id }}</span></div>
+               <div class="col-md-4"><span class="title">Trainer Shiny Value</span><span class="value">{{ ot.shiny_value }}</span></div>
+             </div>
+             <div class="row">
+               <div class="col-md-4"><span class="title">Nickname</span><span class="value">{{ name }}</span></div>
+               <div class="col-md-4"><span class="title">OT Name</span><span class="value">{{ ot.name }}</span></div>
+               <div class="col-md-4"><span class="title">Pokémon Shiny Value</span><span class="value">{{ shiny_value }}</span></div>
+             </div>
+             <div class="row">
+               <div class="col-md-4"><span class="title">Nature</span><span class="value">{{ nature_name }}</span></div>
+               <div class="col-md-4"><span class="title">Gender</span><span class="value">{{ gender_name }}</span></div>
+               <div class="col-md-4"><span class="title">PID</span><span class="value">{{ personality_value }}</span></div>
+             </div>
+             <div class="row">
+               <div class="col-md-4"><span class="title">Ability</span><span class="value">{{ ability_name }}</span></div>
+               <div class="col-md-4"><span class="title">Held Item</span><span class="value">{{ item_name }}</span></div>
+               <div class="col-md-4"><span class="title">is Egg?</span><span class="value">{{ is_egg }}</span></div>
+             </div>
+             <div class="row">
+               <div class="col-md-4">
+                  
+               </div>
+               <div class="col-md-4">
+                 <ul>
+                   {{#each moves.move_names}}
+ 	           <li>Move {{ @index }}<span class="value">{{ this }}</span></li>
+                   {{/each}}
+                 </ul>
+               </div>
+               <div class="col-md-4">
+                 <ul>
+                   {{#each moves.egg_move_names}}
+ 	           <li>Egg Move {{ @index }}<span class="value">{{ this }}</span></li>
+                   {{/each}}
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+
+

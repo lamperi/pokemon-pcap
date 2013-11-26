@@ -12,11 +12,13 @@ describe("PkxDecoder", function() {
             })
         })
         it("should return non-null Object", function() {
-            assert(data != null)
+            assert(data !== null)
             assert(typeof data == "object")
         })
         it("should be a gible", function() {
             assert.equal(443, data.dex_id)
+            //XXX has form of 1?
+            //assert.equal("Gible", data.species)
         })
         it("should return object with name Wireshark", function() {
             assert.equal("Wireshark", data.name)
@@ -62,5 +64,39 @@ describe("PkxDecoder", function() {
 
     "test/data/chestpin.pkx test/data/gengar.pkx test/data/poke1.pkx test/data/skitty.pkx test/data/vivillon.pkx test/data/eevee.pkx test/data/lineon.pkx test/data/poke2.pkx test/data/snorlax.pkx".split(/\s+/).forEach(function(file) {
         describe("#decode('" + file + "')", study_poke(file))
+    })
+
+    describe("#decode(eevee)", function() {
+        var data
+        beforeEach(function(done) {
+            decoder.decodeFile("test/sv/eevee.pkx", function(err, pokemon_data) {
+                data = pokemon_data
+                done(err)
+            })
+        })
+        it("Should have TSV of 407", function() {
+            assert.equal(407, data.ot.shiny_value)
+        })
+
+        it("Should have PSV of 2661", function() {
+            assert.equal(2661, data.shiny_value)
+        })
+    })
+
+    describe("#decode(gible)", function() {
+        var data
+        beforeEach(function(done) {
+            decoder.decodeFile("test/sv/gible.pkx", function(err, pokemon_data) {
+                data = pokemon_data
+                done(err)
+            })
+        })
+        it("Should have TSV of 407", function() {
+            assert.equal(407, data.ot.shiny_value)
+        })
+
+        it("Should have PSV of 3875", function() {
+            assert.equal(3875, data.shiny_value)
+        })
     })
 })

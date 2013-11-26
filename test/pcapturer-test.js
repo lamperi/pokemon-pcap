@@ -23,6 +23,7 @@ describe('PCapturer', function() {
         pCapturer.networkCapturer.emit('udp_packet', packet)
     })
 
+/*
     it('should emit "pokemon" for a good packet, take 2', function(once) {
         var packet = fs.readFileSync('data/udp-packet17.bin')
 
@@ -42,4 +43,5 @@ describe('PCapturer', function() {
         })
         pCapturer.networkCapturer.emit('udp_packet', packet)
     })
+    */
 })
