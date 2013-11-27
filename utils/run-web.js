@@ -2,7 +2,7 @@ var PokemonWeb = require('../lib/web').PokemonWeb,
     fs = require('fs')
 require('./write-json')
 
-var pokemonWeb = new PokemonWeb(5005, '0.0.0.0')
+var pokemonWeb = new PokemonWeb(5008, '0.0.0.0')
 
 var i = 0
 var dir = __dirname + '/pokemon/'

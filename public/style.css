@@ -1,7 +1,23 @@
 span.title {
 	color: blue;
+	display: block;
 }
 
 span.value {
+	color: black;
+	display: ;
+}
+span.value:after {
 	color: red;
+	content: '<3';
+}
+
+.moves ul {
+	padding-left: 0;
+}
+.moves li {
+	list-style: none;
+}
+
+.ivs.evs {
 }

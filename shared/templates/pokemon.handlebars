@@ -16,7 +16,8 @@
              </div>
              <div class="row">
                <div class="col-md-4"><span class="title">Nature</span><span class="value">{{ nature_name }}</span></div>
-               <div class="col-md-4"><span class="title">Gender</span><span class="value">{{ gender_name }}</span></div>
+               <div class="col-md-2"><span class="title">Gender</span><span class="value">{{ gender_name }}</span></div>
+               <div class="col-md-2"><span class="title">Level</span><span class="value">{{ level }}</span></div>
                <div class="col-md-4"><span class="title">PID</span><span class="value">{{ personality_value }}</span></div>
              </div>
              <div class="row">
@@ -25,20 +26,42 @@
                <div class="col-md-4"><span class="title">is Egg?</span><span class="value">{{ is_egg }}</span></div>
              </div>
              <div class="row">
-               <div class="col-md-4">
-                  
+               <div class="col-md-4 ivs evs">
+                 <div class="row">
+                   <div class="col-md-4"></div>
+                   <div class="col-md-4"><span class="title">IVs</span></div>
+                   <div class="col-md-4"><span class="title">EVs</span></div>
+                   <div class="col-md-4"><span class="title">HP</span></div>
+                   <div class="col-md-4"><span class="value">{{ Hp ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ Hp evs }}</span></div>
+                   <div class="col-md-4"><span class="title">Atk</span></div>
+                   <div class="col-md-4"><span class="value">{{ Atk ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ Atk evs }}</span></div>
+                   <div class="col-md-4"><span class="title">Def</span></div>
+                   <div class="col-md-4"><span class="value">{{ Def ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ Def evs }}</span></div>
+                   <div class="col-md-4"><span class="title">SpA</span></div>
+                   <div class="col-md-4"><span class="value">{{ SpA ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ SpA evs }}</span></div>
+                   <div class="col-md-4"><span class="title">SpD</span></div>
+                   <div class="col-md-4"><span class="value">{{ SpD ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ SpD evs }}</span></div>
+                   <div class="col-md-4"><span class="title">Spe</span></div>
+                   <div class="col-md-4"><span class="value">{{ Spe ivs }}</span></div>
+                   <div class="col-md-4"><span class="value">{{ Spe evs }}</span></div>
+                 </div>
                </div>
-               <div class="col-md-4">
+               <div class="col-md-4 moves">
                  <ul>
-                   {{#each moves.move_names}}
- 	           <li>Move {{ @index }}<span class="value">{{ this }}</span></li>
+                   {{#each moves.names}}
+ 	           <li><span class="title">Move {{ @index }}</span><span class="value">{{ this }}</span></li>
                    {{/each}}
                  </ul>
                </div>
-               <div class="col-md-4">
+               <div class="col-md-4 moves">
                  <ul>
-                   {{#each moves.egg_move_names}}
- 	           <li>Egg Move {{ @index }}<span class="value">{{ this }}</span></li>
+                   {{#each moves.egg_names}}
+ 	           <li><span class="title">Egg Move {{ @index }}</span><span class="value">{{ this }}</span></li>
                    {{/each}}
                  </ul>
                </div>
