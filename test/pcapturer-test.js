@@ -23,25 +23,17 @@ describe('PCapturer', function() {
         pCapturer.networkCapturer.emit('udp_packet', packet)
     })
 
-/*
-    it('should emit "pokemon" for a good packet, take 2', function(once) {
-        var packet = fs.readFileSync('data/udp-packet17.bin')
+    it('should carry on metadata', function(once) {
+        var packet = fs.readFileSync('test/raw-series/packet176.bin')
+        var data = {"foo": "bar"}
 
-        pCapturer.on('pokemon', function(pokemon) {
+        pCapturer.on('pokemon', function(pokemon, metadata) {
             assert.equal("Gible", pokemon.name)
+            assert.equal("bar", metadata.foo)
+            assert.equal("wonder_trade", metadata.packet_type)
             once()
         })
-        pCapturer.networkCapturer.emit('udp_packet', packet)
+        pCapturer.networkCapturer.emit('udp_packet', packet, data)
     })
 
-    it('should emit "pokemon" for a good packet, take 3', function(once) {
-        var packet = fs.readFileSync('data/udp-packet18.bin')
-
-        pCapturer.on('pokemon', function(pokemon) {
-            assert.equal("Froakie", pokemon.name)
-            once()
-        })
-        pCapturer.networkCapturer.emit('udp_packet', packet)
-    })
-    */
 })

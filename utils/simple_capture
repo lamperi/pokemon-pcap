@@ -46,6 +46,9 @@ pcap_session.on('packet', function (raw_packet) {
     util.puts(pcap.print.packet(packet));
     // console.log(packet)
 
+
+    fs.writeFileSync('packet.json', JSON.stringify(packet))
+
     if (packet.link_type == 'LINKTYPE_ETHERNET' && packet.link && packet.link.ip && packet.link.ip.protocol_name == 'UDP') {
         if (packet.link.ip.udp.data) {
             fs.writeFileSync("data/udp-packet" + packet_id + ".bin", packet.link.ip.udp.data)
