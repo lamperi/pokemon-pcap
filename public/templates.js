@@ -27,10 +27,12 @@ function program3(depth0,data) {
   return buffer;
   }
 
-  buffer += "        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            Your Pokémon\n          </div>\n          <div class=\"panel-body\">\n             <div class=\"row\">\n               <div class=\"col-md-4\"><span class=\"title\">Species</span><span class=\"value\">";
-  if (stack1 = helpers.species) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.species); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
+  buffer += "        <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.origin)),stack1 == null || stack1 === false ? stack1 : stack1.current_ot)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "'s Pokémon\n          </div>\n          <div class=\"panel-body\">\n             <div class=\"row\">\n               <div class=\"col-md-4\"><span class=\"title\">Species</span><span class=\"value\">";
+  if (stack2 = helpers.species) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = (depth0 && depth0.species); stack2 = typeof stack2 === functionType ? stack2.call(depth0, {hash:{},data:data}) : stack2; }
+  buffer += escapeExpression(stack2)
     + "</span></div>\n               <div class=\"col-md-2\"><span class=\"title\">ID</span><span class=\"value\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.ot)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span></div>\n               <div class=\"col-md-2\"><span class=\"title\">SID</span><span class=\"value\">"

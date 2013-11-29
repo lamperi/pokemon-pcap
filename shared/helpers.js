@@ -46,10 +46,7 @@ var helpers = {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = helpers
 } else {
-    console.log('registering helpers')
     for (var k in helpers) {
-        console.log(k + " -> " + helpers[k])
-        console.log(Handlebars.helpers)
         Handlebars.registerHelper(k, helpers[k]);
     }
 

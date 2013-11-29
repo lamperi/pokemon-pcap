@@ -14,4 +14,6 @@ function sendNext() {
     pokemonWeb.publishPkx(poke)
 }
 
+sendNext()
+sendNext()
 setInterval(sendNext, 5000)

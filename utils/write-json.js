@@ -6,9 +6,12 @@ var toDir = __dirname + '/pokemon/'
 var decoder = new PkxDecoder()
 fs.readdir(fromDir, function(err, files) {
     files.forEach(function(file) {
-        decoder.decodeFile(fromDir + file, function(err, pokemon) {
-            var name = toDir + file.replace('pkx', 'json')
-            fs.writeFileSync(name, JSON.stringify(pokemon))
-        })
+        var data = {"fileName": file}
+        decoder.decodeFile(fromDir + file, callback, {"fileName": file})
     })
 })
+
+function callback(err, pokemon, data) {
+    var name = toDir + data.fileName.replace('pkx', 'json')
+    fs.writeFileSync(name, JSON.stringify(pokemon))
+}
