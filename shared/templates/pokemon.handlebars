@@ -53,16 +53,16 @@
                </div>
                <div class="col-md-4 moves">
                  <ul>
-                   {{#each moves.names}}
+                   {{#eachNatural moves.names}}
  	           <li><span class="title">Move {{ @index }}</span><span class="value">{{ this }}</span></li>
-                   {{/each}}
+                   {{/eachNatural}}
                  </ul>
                </div>
                <div class="col-md-4 moves">
                  <ul>
-                   {{#each moves.egg_names}}
+                   {{#eachNatural moves.egg_names}}
  	           <li><span class="title">Egg Move {{ @index }}</span><span class="value">{{ this }}</span></li>
-                   {{/each}}
+                   {{/eachNatural}}
                  </ul>
                </div>
              </div>

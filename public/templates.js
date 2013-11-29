@@ -112,10 +112,12 @@ function program3(depth0,data) {
   options = {hash:{},data:data};
   buffer += escapeExpression(((stack1 = helpers.Spe || (depth0 && depth0.Spe)),stack1 ? stack1.call(depth0, (depth0 && depth0.evs), options) : helperMissing.call(depth0, "Spe", (depth0 && depth0.evs), options)))
     + "</span></div>\n                 </div>\n               </div>\n               <div class=\"col-md-4 moves\">\n                 <ul>\n                   ";
-  stack2 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.names), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data};
+  stack2 = ((stack1 = helpers.eachNatural || (depth0 && depth0.eachNatural)),stack1 ? stack1.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.names), options) : helperMissing.call(depth0, "eachNatural", ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.names), options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n                 </ul>\n               </div>\n               <div class=\"col-md-4 moves\">\n                 <ul>\n                   ";
-  stack2 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.egg_names), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data};
+  stack2 = ((stack1 = helpers.eachNatural || (depth0 && depth0.eachNatural)),stack1 ? stack1.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.egg_names), options) : helperMissing.call(depth0, "eachNatural", ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.egg_names), options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n                 </ul>\n               </div>\n             </div>\n          </div>\n        </div>\n\n\n";
   return buffer;
