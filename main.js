@@ -7,7 +7,7 @@ nconf.argv()
      .defaults({
         pcap: {
             'interface': 'wlan0',
-            'filter': 'ip proto \\udp and (length > 886 or length = 321)'
+            'filter': 'ip proto \\udp'
         },
         runas: {
             'user': 'nobody',
