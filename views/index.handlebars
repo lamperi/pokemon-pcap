@@ -1,10 +1,18 @@
     <h1>Pokémon Checker for X and Y</h1>
     <div class="row">
       <div id="left-pokemon" class="col-md-6">
+        {{#if left_pokemon }}
         {{>pokemon left_pokemon }}
+        {{else}}
+        Oops, no pokemon captured yet
+        {{/if}}
       </div>
       <div id="right-pokemon" class="col-md-6">
+        {{#if right_pokemon }}
         {{>pokemon right_pokemon }}
+        {{else}}
+        Oops, no pokemon captured yet
+        {{/if}}
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>

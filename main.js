@@ -1,14 +1,25 @@
 var nconf = require('nconf'),
-    pokemonPcap = require('./lib/pokemon-pcap')
+    pokemonPcap = require('./lib/pokemon-pcap'),
+    path = require('path')
 
 nconf.argv()
      .file({ file: 'config.json' })
      .defaults({
-        "pcap:interface": "wlan0",
-        "pcap:filter": "ip proto \\udp and length = 991",
-        "runas:user": "nobody",
-        "runas:group": "nogroup,
-        "web:port": 5008
+        pcap: {
+            'interface': 'wlan0',
+            'filter': 'ip proto \\udp and (length > 886 or length = 321)'
+        },
+        runas: {
+            'user': 'nobody',
+            'group': 'nogroup'
+        },
+        web: {
+            port: 5008,
+            ip: '0.0.0.0'
+        },
+        data: {
+            'dir': path.join(__dirname, '/data')
+        }
      })
 
 pokemonPcap.initialize(nconf)
