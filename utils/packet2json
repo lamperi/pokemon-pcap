@@ -1,19 +1,15 @@
 var PCapturer = require('../lib/pcapturer').PCapturer,
-    fs = require('fs')
+    fs = require('fs'),
 
 var config = {
-    'get': function(key) {
-        return this[key]
-    },
-    'interface': '',
-    'filter': ''
+    'interface': false,
 }
 
 var pCapturer = new PCapturer(config)
 var packet = fs.readFileSync(process.argv[2])
 
-pCapturer.on('pokemon', function(pokemon) {
-    console.log(pokemon)
+pCapturer.on('pokemon', function(pokemon, metadata) {
+    console.log(JSON.stringify(pokemon, null, 2))
 })
 pCapturer.on('error', function(err) {
     console.log('error happened')

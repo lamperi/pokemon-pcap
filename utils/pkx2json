@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+var Decoder = require('../lib/decoder').PkxDecoder
+    fs = require('fs')
+
+var fromFile = process.argv[2] || "input.pkx"
+
+var pkx = fs.readFileSync(fromFile)
+var decoder = new Decoder()
+decoder.decode(pkx)
+decoder.on('pokemon', function(pokemon) {
+    console.log(JSON.stringify(pokemon, null, 2))
+})

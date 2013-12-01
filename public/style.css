@@ -21,3 +21,10 @@ span.value:after {
 
 .ivs.evs {
 }
+
+#connected {
+	display: none
+}
+#disconnected {
+	display: inline-block
+}
