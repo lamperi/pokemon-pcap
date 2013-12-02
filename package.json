@@ -12,7 +12,9 @@
   "license": "BSD",
   "main": "lib/pokemon-pcap.js",
   "bin": {
-    "pokemon-pcap": "./main.js"
+    "pokemon-pcap": "./main.js",
+    "packet2json": "./utils/packet2json",
+    "pkx2json": "./utils/pkx2json"
   },
   "directories": {
     "lib": "lib",
