@@ -138,8 +138,18 @@ function program7(depth0,data) {
 templates['pokemonTitle'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += " [";
+  if (stack1 = helpers.shiny_value) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.shiny_value); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "]";
+  return buffer;
+  }
 
   if (stack1 = helpers.species) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.species); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
@@ -172,8 +182,10 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   buffer += escapeExpression(((stack1 = helpers.SpD || (depth0 && depth0.SpD)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "SpD", (depth0 && depth0.ivs), options)))
     + "\\";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.Spe || (depth0 && depth0.Spe)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Spe", (depth0 && depth0.ivs), options)))
-    + "\n";
+  buffer += escapeExpression(((stack1 = helpers.Spe || (depth0 && depth0.Spe)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Spe", (depth0 && depth0.ivs), options)));
+  stack2 = helpers['if'].call(depth0, (depth0 && depth0.is_egg), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n";
   return buffer;
   });
 })();
