@@ -132,6 +132,7 @@ void CryptPkx(u32* pkx, u32* key, u32 len, Rnd* cr)
     for (u32 i = 0; i < len / 2; ++i)
     {
         cryptKey = CryptRNG(key, cr);
+	printf("value %d, %d, %d, %d\n", epkx[i], cryptKey, epkx[i] ^ cryptKey, *key);
         epkx[i] ^= cryptKey;
     }
 }
@@ -172,6 +173,7 @@ bool VerifyPkxChecksum(u32* pkx, u16 currentSum, u32 len)       // this accepts 
 
     u16 testSum = CalcPkxChecksum(epkx, len);
 
+    printf("checksum %d, %d\n", currentSum, testSum);
     if (testSum == currentSum)
     {
         return true;
