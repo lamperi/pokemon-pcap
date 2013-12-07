@@ -3,9 +3,21 @@
 templates['pokemon'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
+  
+  
+  return "yes";
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "no";
+  }
+
+function program5(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n 	           <li><span class=\"title\">Move "
@@ -16,7 +28,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n 	           <li><span class=\"title\">Egg Move "
@@ -74,10 +86,9 @@ function program3(depth0,data) {
   else { stack2 = (depth0 && depth0.item_name); stack2 = typeof stack2 === functionType ? stack2.call(depth0, {hash:{},data:data}) : stack2; }
   buffer += escapeExpression(stack2)
     + "</span></div>\n               <div class=\"col-md-4\"><span class=\"title\">is Egg?</span><span class=\"value\">";
-  if (stack2 = helpers.is_egg) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
-  else { stack2 = (depth0 && depth0.is_egg); stack2 = typeof stack2 === functionType ? stack2.call(depth0, {hash:{},data:data}) : stack2; }
-  buffer += escapeExpression(stack2)
-    + "</span></div>\n             </div>\n             <div class=\"row\">\n               <div class=\"col-md-4 ivs evs\">\n                 <div class=\"row\">\n                   <div class=\"col-md-4\"></div>\n                   <div class=\"col-md-4\"><span class=\"title\">IVs</span></div>\n                   <div class=\"col-md-4\"><span class=\"title\">EVs</span></div>\n                   <div class=\"col-md-4\"><span class=\"title\">HP</span></div>\n                   <div class=\"col-md-4\"><span class=\"value\">";
+  stack2 = helpers['if'].call(depth0, (depth0 && depth0.is_egg), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "</span></div>\n             </div>\n             <div class=\"row\">\n               <div class=\"col-md-4 ivs evs\">\n                 <div class=\"row\">\n                   <div class=\"col-md-4\"></div>\n                   <div class=\"col-md-4\"><span class=\"title\">IVs</span></div>\n                   <div class=\"col-md-4\"><span class=\"title\">EVs</span></div>\n                   <div class=\"col-md-4\"><span class=\"title\">HP</span></div>\n                   <div class=\"col-md-4\"><span class=\"value\">";
   options = {hash:{},data:data};
   buffer += escapeExpression(((stack1 = helpers.Hp || (depth0 && depth0.Hp)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Hp", (depth0 && depth0.ivs), options)))
     + "</span></div>\n                   <div class=\"col-md-4\"><span class=\"value\">";
@@ -114,11 +125,11 @@ function program3(depth0,data) {
   options = {hash:{},data:data};
   buffer += escapeExpression(((stack1 = helpers.Spe || (depth0 && depth0.Spe)),stack1 ? stack1.call(depth0, (depth0 && depth0.evs), options) : helperMissing.call(depth0, "Spe", (depth0 && depth0.evs), options)))
     + "</span></div>\n                 </div>\n               </div>\n               <div class=\"col-md-4 moves\">\n                 <ul>\n                   ";
-  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data};
   stack2 = ((stack1 = helpers.eachNatural || (depth0 && depth0.eachNatural)),stack1 ? stack1.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.names), options) : helperMissing.call(depth0, "eachNatural", ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.names), options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n                 </ul>\n               </div>\n               <div class=\"col-md-4 moves\">\n                 <ul>\n                   ";
-  options = {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data};
+  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data};
   stack2 = ((stack1 = helpers.eachNatural || (depth0 && depth0.eachNatural)),stack1 ? stack1.call(depth0, ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.egg_names), options) : helperMissing.call(depth0, "eachNatural", ((stack1 = (depth0 && depth0.moves)),stack1 == null || stack1 === false ? stack1 : stack1.egg_names), options));
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n                 </ul>\n               </div>\n             </div>\n          </div>\n        </div>\n\n\n";
