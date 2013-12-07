@@ -40,6 +40,12 @@ var helpers = {
             }
         }
         return out
+    },
+    'json': function(object) {
+        return JSON.stringify(object)
+    },
+    'gender': function(pokemon) {
+        return pokemon.genderless ? '' : pokemon.female ? '(F)' : '(M)'
     }
 }
 
@@ -49,5 +55,4 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     for (var k in helpers) {
         Handlebars.registerHelper(k, helpers[k]);
     }
-
 }

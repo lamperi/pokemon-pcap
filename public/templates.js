@@ -124,4 +124,45 @@ function program3(depth0,data) {
   buffer += "\n                 </ul>\n               </div>\n             </div>\n          </div>\n        </div>\n\n\n";
   return buffer;
   });
+templates['pokemonTitle'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+
+
+  if (stack1 = helpers.species) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.species); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.gender || (depth0 && depth0.gender)),stack1 ? stack1.call(depth0, depth0, options) : helperMissing.call(depth0, "gender", depth0, options)))
+    + " - ";
+  if (stack2 = helpers.nature_name) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = (depth0 && depth0.nature_name); stack2 = typeof stack2 === functionType ? stack2.call(depth0, {hash:{},data:data}) : stack2; }
+  buffer += escapeExpression(stack2)
+    + ", ";
+  if (stack2 = helpers.ability_name) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = (depth0 && depth0.ability_name); stack2 = typeof stack2 === functionType ? stack2.call(depth0, {hash:{},data:data}) : stack2; }
+  buffer += escapeExpression(stack2)
+    + ", ";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.Hp || (depth0 && depth0.Hp)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Hp", (depth0 && depth0.ivs), options)))
+    + "\\";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.Atk || (depth0 && depth0.Atk)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Atk", (depth0 && depth0.ivs), options)))
+    + "\\";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.Def || (depth0 && depth0.Def)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Def", (depth0 && depth0.ivs), options)))
+    + "\\";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.SpA || (depth0 && depth0.SpA)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "SpA", (depth0 && depth0.ivs), options)))
+    + "\\";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.SpD || (depth0 && depth0.SpD)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "SpD", (depth0 && depth0.ivs), options)))
+    + "\\";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.Spe || (depth0 && depth0.Spe)),stack1 ? stack1.call(depth0, (depth0 && depth0.ivs), options) : helperMissing.call(depth0, "Spe", (depth0 && depth0.ivs), options)))
+    + "\n";
+  return buffer;
+  });
 })();

@@ -19,6 +19,22 @@
         {{/if}}
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <select id="left-list">
+        {{#if left_pokemon }}
+        <option value="{{json left_pokemon}}">{{>pokemonTitle left_pokemon }}</option>
+        {{/if}}
+        </select>
+      </div>
+      <div class="col-md-6">
+        <select id="right-list">
+        {{#if left_pokemon }}
+        <option value="{{json right_pokemon}}">{{>pokemonTitle right_pokemon }}</option>
+        {{/if}}
+        </select>
+      </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/config.js"></script>
     <script src="/pokemon.js"></script>

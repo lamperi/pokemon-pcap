@@ -12,6 +12,10 @@ span.value:after {
 	content: '<3';
 }
 
+select {
+	width: 100%
+}
+
 .moves ul {
 	padding-left: 0;
 }

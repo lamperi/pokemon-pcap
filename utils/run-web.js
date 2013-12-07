@@ -18,7 +18,7 @@ function sendNext() {
     
     var poke = JSON.parse(fs.readFileSync(dir + file))
     var data = {
-        saddr: Math.random() < 0.5 ? '00:00:00:00:00:AA' : '00:00:00:00:00:BB',
+        shost: Math.random() < 0.5 ? '00:00:00:00:00:AA' : '00:00:00:00:00:BB',
         packet_type: Math.random() < 0.5 ? 'wonder_trade' : 'trade_show'
     }
     pokemonWeb.publishPkx(poke, data)
