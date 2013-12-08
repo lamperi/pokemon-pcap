@@ -26,6 +26,7 @@
         <option value="{{json this}}">{{>pokemonTitle this}}</option>
         {{/each}}
         </select>
+        <button id="left-export">Export as text</button>
       </div>
       <div class="col-md-6">
         <select id="right-list">
@@ -33,6 +34,19 @@
         <option value="{{json this}}">{{>pokemonTitle this}}</option>
         {{/each}}
         </select>
+        <button id="right-export">Export as text</button>
+      </div>
+    </div>
+    <div class="modal fade" id="export-modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div>
+          <div class="modal-body">
+            <textarea readonly="true" style="width: 100%"></textarea> 
+          <div>
+        </div>
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
