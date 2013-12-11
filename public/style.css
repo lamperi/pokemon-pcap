@@ -1,15 +1,16 @@
 span.title {
-	color: blue;
+	color: #777;
 	display: block;
 }
 
 span.value {
 	color: black;
-	display: ;
+	font-weight: bold;
+	display: inline-block;
 }
 span.value:after {
 	color: red;
-	content: '<3';
+	content: ' ';
 }
 
 select {
@@ -23,9 +24,12 @@ select {
 	list-style: none;
 }
 
-.ivs.evs {
+.ivs.evs .col-md-4{
+	margin-bottom: 2px;
 }
 
+
+/* which status to show? will be changed on demand */
 #connected {
 	display: none
 }
