@@ -41,7 +41,8 @@ html,body {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -60px;
+	/* 100 comes from header 40px plus footer 60px */
+	margin: 0 auto -100px;
 }
 #push,
 #footer {
