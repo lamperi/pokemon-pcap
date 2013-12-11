@@ -1,0 +1,13 @@
+{
+    "pcap": {
+        "interface": "wlan0"
+    },
+    "3ds": {
+        "mac": "e0:0c:7f:00:00:00"
+    },
+    "runas": {
+        "user": "youruser",
+        "group": "users"
+    }
+}
+
