@@ -4,7 +4,7 @@ var PkxDecoder = require('../lib/decoder').PkxDecoder,
 var fromDir = __dirname + '/../test/data/'
 var toDir = __dirname + '/pokemon/'
 var decoder = new PkxDecoder()
-fs.mkdir(toDir)
+fs.mkdir(toDir, function() {}, function() {})
 fs.readdir(fromDir, function(err, files) {
     files.forEach(function(file) {
         var data = {"fileName": file}

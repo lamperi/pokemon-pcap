@@ -9,6 +9,7 @@ var conf = new nconf.Provider({type: 'literal', store: {
     '3ds': {mac: '00:00:00:00:00:AA'}
     }})
 var pokemonWeb = new PokemonWeb(conf.get('database'), conf.get('3ds'))
+pokemonWeb.init()
 
 var i = 0
 var dir = __dirname + '/pokemon/'
