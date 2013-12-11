@@ -1,11 +1,10 @@
 #pokémon-pcap
-============
 
 **Pokémon-Pcap** is an Instacheck-compactible tool to capture and display Pokémon data structures over 3DS wireless communication on Pokémon X and Pokémon Y on posix systems.
 
 
 ##How to use
-============
+
 
 First, you will need a way to route 3DS traffic via your computer. The simplest way would be to host a wireless hotspot.
 
