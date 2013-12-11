@@ -1,8 +1,10 @@
-var phantom = require('phantom'),
-    PokemonWeb = require('../lib/web').PokemonWeb,
+var PokemonWeb = require('../lib/web').PokemonWeb,
     assert = require('assert')
 
+// TODO write better web tests
+// phantom is pretty heavyweight just for this
 describe.skip('PokemonWeb', function() {
+    var phantom = require('phantom'),
     var pokemonWeb = new PokemonWeb(5001, '0.0.0.0')
     var ph
     before(function(once) {
